@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
 import 'package:ryc_flutter/local_notifications/NotificationsPage.dart';
+import 'package:ryc_flutter/videoplayer/VideoPlayerPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -71,18 +72,33 @@ class ListPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const MapsPage(title: "Google Maps Page")),
+                    builder: (context) =>
+                        const MapsPage(title: "Google Maps Page")),
               );
             },
           ),
           ListTile(
             title: const Text("Notificaciones Locales"),
-            subtitle: const Text("Ejemplo de uso de notificaciones offline/locales"),
+            subtitle:
+                const Text("Ejemplo de uso de notificaciones offline/locales"),
             onTap: () {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const NotificationsPage(title: "Notif. Locales Page")),
+                    builder: (context) =>
+                        const NotificationsPage(title: "Notif. Locales Page")),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("Reproductor de video"),
+            subtitle: const Text("Ejemplo de uso de media player"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const VideoPlayerPage(title: "VideoPlayer Page")),
               );
             },
           )
