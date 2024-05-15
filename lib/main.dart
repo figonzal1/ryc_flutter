@@ -4,6 +4,7 @@ import 'package:ryc_flutter/gps/GpsPage.dart';
 import 'package:ryc_flutter/local_notifications/NotificationsPage.dart';
 import 'package:ryc_flutter/theme_toggle/ThemeTogglePage.dart';
 import 'package:ryc_flutter/videoplayer/VideoPlayerPage.dart';
+import 'package:ryc_flutter/webview/WebViewPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -134,6 +135,18 @@ class ListPage extends StatelessWidget {
                     builder: (context) => ThemeTogglePage(
                         title: "Theme Toggle Page",
                         themeModeNotifier: themeModeNotifier)),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("WebView"),
+            subtitle: const Text("Ejemplo de uso de webView"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const WebViewPage(title: "WebView Toggle Page")),
               );
             },
           )
