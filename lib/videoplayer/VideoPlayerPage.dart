@@ -14,24 +14,35 @@ class VideoPlayerPage extends StatefulWidget {
 }
 
 class _VideoPlayerPageState extends State<VideoPlayerPage> {
-  late VideoPlayerController _controller;
-  late Future<void> _videoPlayerFuture;
+  //Remote video
+  late VideoPlayerController _remoteVideoController;
+  late Future<void> _remoteVideoPlayerFuture;
+
+  //Local video
+  late VideoPlayerController _localVideoController;
+  late Future<void> _localVideoPlayerFuture;
 
   @override
   void initState() {
     super.initState();
 
-    _controller = VideoPlayerController.networkUrl(Uri.parse(
+    _remoteVideoController = VideoPlayerController.networkUrl(Uri.parse(
         "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4"));
 
-    _videoPlayerFuture = _controller.initialize();
-    _controller.setLooping(true);
+    _remoteVideoPlayerFuture = _remoteVideoController.initialize();
+    _remoteVideoController.setLooping(true);
+
+    _localVideoController =
+        VideoPlayerController.asset("assets/videos/test_coopeuch.mp4");
+    _localVideoPlayerFuture = _localVideoController.initialize();
+    _localVideoController.setLooping(true);
   }
 
   @override
   void dispose() {
     // Ensure disposing of the VideoPlayerController to free up resources.
-    _controller.dispose();
+    _remoteVideoController.dispose();
+    _localVideoController.dispose();
 
     super.dispose();
   }
@@ -43,34 +54,84 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: FutureBuilder(
-        future: _videoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            if (_controller.value.isPlaying) {
-              _controller.pause();
-            } else {
-              _controller.play();
-            }
-          });
-        },
-        // Display the correct icon depending on the state of the player.
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+      body: Container(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          children: [
+            const Text(
+              "Remote video",
+              style: TextStyle(fontSize: 24),
+            ),
+            FutureBuilder(
+              future: _remoteVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return AspectRatio(
+                    aspectRatio: _remoteVideoController.value.aspectRatio,
+                    child: VideoPlayer(_remoteVideoController),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            MaterialButton(
+                color: Theme.of(context).colorScheme.inversePrimary,
+                child: Icon(
+                  _remoteVideoController.value.isPlaying
+                      ? Icons.pause
+                      : Icons.play_arrow,
+                ),
+                onPressed: () {
+                  setState(() {
+                    if (_remoteVideoController.value.isPlaying) {
+                      _remoteVideoController.pause();
+                    } else {
+                      _remoteVideoController.play();
+                      _localVideoController.pause();
+                    }
+                  });
+                }),
+            const Padding(padding: EdgeInsets.only(top: 10)),
+            const Text(
+              "Local video",
+              style: TextStyle(fontSize: 24),
+            ),
+            FutureBuilder(
+              future: _localVideoPlayerFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return AspectRatio(
+                    aspectRatio: _localVideoController.value.aspectRatio,
+                    child: VideoPlayer(_localVideoController),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+            MaterialButton(
+                color: Theme.of(context).colorScheme.inversePrimary,
+                child: Icon(
+                  _localVideoController.value.isPlaying
+                      ? Icons.pause
+                      : Icons.play_arrow,
+                ),
+                onPressed: () {
+                  setState(() {
+                    if (_localVideoController.value.isPlaying) {
+                      _localVideoController.pause();
+                    } else {
+                      _localVideoController.play();
+                      _remoteVideoController.pause();
+                    }
+                  });
+                })
+          ],
         ),
       ),
     );
