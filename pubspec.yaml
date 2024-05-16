@@ -44,6 +44,7 @@ dependencies:
   webview_flutter: ^4.7.0
   external_app_launcher: ^4.0.0
   android_intent_plus: ^5.0.2
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

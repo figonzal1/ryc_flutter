@@ -3,6 +3,7 @@ import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
 import 'package:ryc_flutter/intents/IntentsPage.dart';
 import 'package:ryc_flutter/local_notifications/NotificationsPage.dart';
+import 'package:ryc_flutter/shared_pref/SharedPrefPage.dart';
 import 'package:ryc_flutter/theme_toggle/ThemeTogglePage.dart';
 import 'package:ryc_flutter/videoplayer/VideoPlayerPage.dart';
 import 'package:ryc_flutter/webview/WebViewPage.dart';
@@ -161,6 +162,19 @@ class ListPage extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) =>
                         const IntentsPage(title: "Intent Page")),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("Shared Preferences"),
+            subtitle:
+                const Text("Ejemplo de uso de preferencias locales"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const SharedPrefPage(title: "SharedPref Page")),
               );
             },
           )
