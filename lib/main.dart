@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
+import 'package:ryc_flutter/intents/IntentsPage.dart';
 import 'package:ryc_flutter/local_notifications/NotificationsPage.dart';
 import 'package:ryc_flutter/theme_toggle/ThemeTogglePage.dart';
 import 'package:ryc_flutter/videoplayer/VideoPlayerPage.dart';
@@ -147,6 +148,19 @@ class ListPage extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) =>
                         const WebViewPage(title: "WebView Toggle Page")),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("Intents"),
+            subtitle:
+                const Text("Ejemplo de uso de intents explicitos e implicitos"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const IntentsPage(title: "Intent Page")),
               );
             },
           )

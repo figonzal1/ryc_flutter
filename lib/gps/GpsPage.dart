@@ -40,7 +40,7 @@ class _GpsPageState extends State<GpsPage> {
 
   void checkStatus() async {
     bool isGpsEnabled = await gpsTracker.isGPSEnabled();
-    bool isLocationPermissionGranted = await gpsTracker.isPermissionGranted();
+    bool isLocationPermissionGranted = await gpsTracker.isLocationPermissionGranted();
 
     logger.d("Permission granted: $permissionGranted");
     logger.d("GPS enabled: $isGpsEnabled");

@@ -19,7 +19,7 @@ class GpsTrackerObserver {
     if (!(await isGPSEnabled())) {
       return;
     }
-    if (!(await isPermissionGranted())) {
+    if (!(await isLocationPermissionGranted())) {
       return;
     }
 
@@ -47,7 +47,7 @@ class GpsTrackerObserver {
     _locations.clear();
   }
 
-  Future<bool> isPermissionGranted() async =>
+  Future<bool> isLocationPermissionGranted() async =>
       await Permission.locationWhenInUse.isGranted;
 
   Future<bool> isGPSEnabled() async =>
