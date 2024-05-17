@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ryc_flutter/battery/BatteryPage.dart';
-import 'package:ryc_flutter/database/database.dart';
+import 'package:ryc_flutter/database/config/database.dart';
 
 class DbInit extends StatefulWidget {
   final Widget child;

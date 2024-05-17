@@ -1,5 +1,5 @@
 import 'package:floor/floor.dart';
-import 'package:ryc_flutter/database/entities.dart';
+import 'package:ryc_flutter/database/config/entities.dart';
 
 @dao
 abstract class PersonDao {

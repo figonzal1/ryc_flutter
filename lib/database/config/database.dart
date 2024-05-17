@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:floor/floor.dart';
-import 'package:ryc_flutter/database/dao.dart';
-import 'package:ryc_flutter/database/entities.dart';
+import 'package:ryc_flutter/database/config/dao.dart';
+import 'package:ryc_flutter/database/config/entities.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;
 
 part 'database.g.dart'; // the generated code will be there
