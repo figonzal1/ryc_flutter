@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ryc_flutter/battery/BatteryPage.dart';
+import 'package:ryc_flutter/contacts/contacts_page.dart';
 import 'package:ryc_flutter/database/floor_db_page.dart';
 import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
@@ -225,6 +226,20 @@ class ListPage extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) =>
                         const SensorPage(title: "Sensores Page")),
+              );
+            },
+          ),
+          ListTile(
+            dense: true,
+            title: const Text("Contactos"),
+            subtitle:
+                const Text("Ejemplo de interacción con contactos del teléfono"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const ContactsPage(title: "Contactos Page")),
               );
             },
           )

@@ -67,7 +67,7 @@ class _BatteryPageState extends State<BatteryPage> {
                   return const CircularProgressIndicator();
                 } else {
                   if (snapshot.hasError) {
-                    return Text('Error: ${snapshot.error}%');
+                    return Text('Error: ${snapshot.error}');
                   } else {
                     return DataTable(
                       columns: const <DataColumn>[
@@ -86,7 +86,7 @@ class _BatteryPageState extends State<BatteryPage> {
                         DataRow(
                           cells: <DataCell>[
                             const DataCell(Text('Nivel de batería')),
-                            DataCell(Text('${snapshot.data?[0]}')),
+                            DataCell(Text('${snapshot.data?[0]}%')),
                           ],
                         ),
                         const DataRow(
