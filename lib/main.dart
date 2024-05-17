@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ryc_flutter/battery/BatteryPage.dart';
 import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
 import 'package:ryc_flutter/intents/IntentsPage.dart';
@@ -175,6 +176,19 @@ class ListPage extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) =>
                         const SharedPrefPage(title: "SharedPref Page")),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("Información de batería"),
+            subtitle:
+                const Text("Ejemplo de consumo de información de batería"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const BatteryPage(title: "Battery Page")),
               );
             },
           )
