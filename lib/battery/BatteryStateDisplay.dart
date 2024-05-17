@@ -15,6 +15,20 @@ class _BatteryStateDisplayState extends State<BatteryStateDisplay> {
   BatteryState _batteryState = BatteryState.unknown;
   late StreamSubscription<BatteryState> _batteryStateSubscription;
 
+  String formatBatteryState(BatteryState batteryState) {
+    if (batteryState == BatteryState.charging) {
+      return "Cargando";
+    } else if (batteryState == BatteryState.connectedNotCharging) {
+      return "Conectado, no cargando";
+    } else if (batteryState == BatteryState.discharging) {
+      return "Descargando";
+    } else if (batteryState == BatteryState.full) {
+      return "Full carga";
+    }
+
+    return "Desconocido";
+  }
+
   @override
   void initState() {
     super.initState();
@@ -34,6 +48,6 @@ class _BatteryStateDisplayState extends State<BatteryStateDisplay> {
 
   @override
   Widget build(BuildContext context) {
-    return Text(_batteryState.toString());
+    return Text(formatBatteryState(_batteryState));
   }
 }

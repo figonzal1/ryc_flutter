@@ -36,6 +36,14 @@ class _BatteryPageState extends State<BatteryPage> {
     return await battery.isInBatterySaveMode;
   }
 
+  String formatBatterySave(bool batterySave) {
+    if (batterySave) {
+      return "Activado";
+    } else {
+      return "Desactivado";
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +60,7 @@ class _BatteryPageState extends State<BatteryPage> {
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             FutureBuilder<List<dynamic>>(
-              future: Future.wait([getBatteryLevel()]),
+              future: Future.wait([getBatteryLevel(), isBatterySaver()]),
               builder: (BuildContext context,
                   AsyncSnapshot<List<dynamic>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -87,18 +95,19 @@ class _BatteryPageState extends State<BatteryPage> {
                             DataCell(BatteryStateDisplay()),
                           ],
                         ),
+                        DataRow(
+                          cells: <DataCell>[
+                            const DataCell(Text('Modo ahorro')),
+                            DataCell(
+                                Text(formatBatterySave(snapshot.data?[1]))),
+                          ],
+                        ),
                         // Puedes agregar más filas aquí...
                       ],
                     );
                   }
                 }
               },
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                logger.d("Button pressed");
-              },
-              child: Text('Mostrar notificación'),
             ),
           ],
         ),
