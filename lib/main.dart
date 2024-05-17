@@ -5,6 +5,7 @@ import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
 import 'package:ryc_flutter/intents/IntentsPage.dart';
 import 'package:ryc_flutter/local_notifications/NotificationsPage.dart';
+import 'package:ryc_flutter/sensor/SensorPage.dart';
 import 'package:ryc_flutter/shared_pref/SharedPrefPage.dart';
 import 'package:ryc_flutter/theme_toggle/ThemeTogglePage.dart';
 import 'package:ryc_flutter/videoplayer/VideoPlayerPage.dart';
@@ -82,6 +83,7 @@ class ListPage extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListTile(
+            dense: true,
             title: const Text("GPS"),
             subtitle: const Text("Ejemplo de trackeo con GPS"),
             onTap: () {
@@ -93,6 +95,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Google Maps"),
             subtitle: const Text("Ejemplo de uso de mapa"),
             onTap: () {
@@ -105,6 +108,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Notificaciones Locales"),
             subtitle:
                 const Text("Ejemplo de uso de notificaciones offline/locales"),
@@ -118,6 +122,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Reproductor de video"),
             subtitle: const Text("Ejemplo de uso de media player"),
             onTap: () {
@@ -130,6 +135,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Light/Dark theme"),
             subtitle: const Text("Ejemplo de uso de theme toggle"),
             onTap: () {
@@ -143,6 +149,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("WebView"),
             subtitle: const Text("Ejemplo de uso de webView"),
             onTap: () {
@@ -155,6 +162,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Intents"),
             subtitle:
                 const Text("Ejemplo de uso de intents explicitos e implicitos"),
@@ -168,6 +176,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Shared Preferences"),
             subtitle: const Text("Ejemplo de uso de preferencias locales"),
             onTap: () {
@@ -180,6 +189,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Información de batería"),
             subtitle:
                 const Text("Ejemplo de consumo de información de batería"),
@@ -193,6 +203,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
+            dense: true,
             title: const Text("Floor Database (Local DB)"),
             subtitle: const Text("Ejemplo de interacción con Floor DB"),
             onTap: () {
@@ -201,6 +212,19 @@ class ListPage extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) =>
                         const FloorDbPage(title: "Floor DB Page")),
+              );
+            },
+          ),
+          ListTile(
+            dense: true,
+            title: const Text("Sensores"),
+            subtitle: const Text("Ejemplo de interacción con sensores"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const SensorPage(title: "Sensores Page")),
               );
             },
           )

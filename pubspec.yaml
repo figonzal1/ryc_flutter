@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.2.3
   battery_plus: ^6.0.1
   floor: ^1.5.0
+  sensors_plus: ^5.0.1
 
 dev_dependencies:
   flutter_test:
