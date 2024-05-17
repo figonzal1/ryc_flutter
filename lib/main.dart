@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ryc_flutter/battery/BatteryPage.dart';
+import 'package:ryc_flutter/database/floor_db_page.dart';
 import 'package:ryc_flutter/gmaps/MapsPage.dart';
 import 'package:ryc_flutter/gps/GpsPage.dart';
 import 'package:ryc_flutter/intents/IntentsPage.dart';
@@ -168,8 +169,7 @@ class ListPage extends StatelessWidget {
           ),
           ListTile(
             title: const Text("Shared Preferences"),
-            subtitle:
-                const Text("Ejemplo de uso de preferencias locales"),
+            subtitle: const Text("Ejemplo de uso de preferencias locales"),
             onTap: () {
               Navigator.push(
                 context,
@@ -189,6 +189,18 @@ class ListPage extends StatelessWidget {
                 MaterialPageRoute(
                     builder: (context) =>
                         const BatteryPage(title: "Battery Page")),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text("Floor Database"),
+            subtitle: const Text("Ejemplo de interacción con Floor DB"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const FloorDbPage(title: "Floor DB Page")),
               );
             },
           )

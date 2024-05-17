@@ -45,6 +45,7 @@ class _SharedPrefPageState extends State<SharedPrefPage> {
   Future<void> getValue() async {
     final SharedPreferences prefs = await _prefs;
 
+    logger.d("Get value");
     setState(() {
       value = prefs.getString(valueKey) ?? "undefined";
     });
@@ -71,8 +72,8 @@ class _SharedPrefPageState extends State<SharedPrefPage> {
             ),
             const SizedBox(height: 20),
             TextField(
-              onChanged: (value) {
-                value = value;
+              onChanged: (newValue) {
+                value = newValue;
               },
               decoration: const InputDecoration(
                   constraints: BoxConstraints.tightFor(width: 250),
