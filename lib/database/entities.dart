@@ -3,11 +3,11 @@ import 'package:floor/floor.dart';
 @Entity()
 class Person {
   @PrimaryKey(autoGenerate: true)
-  final int id;
+  int? id;
 
   final String name;
 
-  Person(this.id, this.name);
+  Person(this.name);
 }
 
 @Entity(foreignKeys: [

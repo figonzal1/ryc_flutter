@@ -96,7 +96,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `Person` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `Person` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL)');
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `Pet` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `person_id` INTEGER NOT NULL, FOREIGN KEY (`person_id`) REFERENCES `Person` (`id`) ON UPDATE NO ACTION ON DELETE NO ACTION, PRIMARY KEY (`id`))');
 
@@ -134,15 +134,13 @@ class _$PersonDao extends PersonDao {
   @override
   Future<List<Person>> findAllPerson() async {
     return _queryAdapter.queryList('SELECT * FROM Person',
-        mapper: (Map<String, Object?> row) =>
-            Person(row['id'] as int, row['name'] as String));
+        mapper: (Map<String, Object?> row) => Person(row['name'] as String));
   }
 
   @override
   Future<Person?> findPersonById(int id) async {
     return _queryAdapter.query('SELECT * FROM Person WHERE id = ?1',
-        mapper: (Map<String, Object?> row) =>
-            Person(row['id'] as int, row['name'] as String),
+        mapper: (Map<String, Object?> row) => Person(row['name'] as String),
         arguments: [id]);
   }
 

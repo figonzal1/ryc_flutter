@@ -193,7 +193,7 @@ class ListPage extends StatelessWidget {
             },
           ),
           ListTile(
-            title: const Text("Floor Database"),
+            title: const Text("Floor Database (Local DB)"),
             subtitle: const Text("Ejemplo de interacción con Floor DB"),
             onTap: () {
               Navigator.push(
